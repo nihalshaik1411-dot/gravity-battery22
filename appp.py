@@ -159,7 +159,7 @@ def animate_seesaw(placeholder, drop_side, drop_color, lift_side, lift_color, dr
     return True
 
 def animate_big_cycle(placeholder, storage_left, storage_right, steps=60):
-    # First, simultaneous drop 160kg and lift storage blocks at C and D
+    # First, simultaneous drop 160kg and lift storage blocks at C and D in parallel
     start_drop_y = 50
     end_drop_y = -50
     start_lift_y = -50
@@ -185,7 +185,7 @@ def animate_big_cycle(placeholder, storage_left, storage_right, steps=60):
         fig = draw_scene(moving_blocks=moving_blocks)
         placeholder.plotly_chart(fig, use_container_width=True)
         time.sleep(FRAME_DELAY)
-    st.session_state.logs.append(f"Completed simultaneous drop 160kg and lift {storage_left}kg from C, {storage_right}kg from D")
+    st.session_state.logs.append(f"Completed simultaneous drop 160kg and parallel lift {storage_left}kg from C, {storage_right}kg from D")
 
     # Pause briefly
     time.sleep(0.4)
@@ -408,7 +408,7 @@ if st.session_state.running and not st.session_state.stop_requested:
                 f"Storage L: {st.session_state.storage_left}kg | Storage R: {st.session_state.storage_right}kg | Total: {total_storage}kg\n"
                 f"B1: {st.session_state.battery1}% | B2: {st.session_state.battery2}% | Gen: {st.session_state.generator_angle}°\n"
                 f"Houses: {'lit' if st.session_state.houses_lit else 'dark'}\n"
-                f"Action: Big cycle: Dropped 160kg, lifted {total_blocks_to_distribute * 10}kg to A ({blocks_to_a * 10}kg) and B ({blocks_to_b * 10}kg), "
+                f"Action: Big cycle: Dropped 160kg, lifted {total_blocks_to_distribute * 10}kg in parallel (C: {blocks_to_a * 10}kg to A, D: {blocks_to_b * 10}kg to B), "
                 f"B2 +{(energy_joules / B2_CAPACITY) * 100:.1f}%, Gen +{(energy_joules / B2_CAPACITY) * 360:.0f}°. "
                 f"Reset storages. Used {(80_000 / B2_CAPACITY) * 100:.1f}% B2 to lift 160kg."
             )
