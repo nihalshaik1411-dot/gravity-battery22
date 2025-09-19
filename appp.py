@@ -212,7 +212,7 @@ with left_col:
     st.write("Initial top stacks (editable, max 200kg total):")
     blocks_a = st.number_input("Blocks at top A (10kg each)", min_value=0, max_value=MAX_TOTAL_BLOCKS, value=st.session_state.blocks_top_A, step=1)
     blocks_b = st.number_input("Blocks at top B (10kg each)", min_value=0, max_value=MAX_TOTAL_BLOCKS, value=st.session_state.blocks_top_B, step=1)
-    if blocks_a + blocks_b <= MAX_TOTAL_BLOCKs:
+    if blocks_a + blocks_b <= MAX_TOTAL_BLOCKS:
         st.session_state.blocks_top_A = blocks_a
         st.session_state.blocks_top_B = blocks_b
     else:
